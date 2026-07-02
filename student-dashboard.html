@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">EduStream</div>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('courses') }}">Courses</a>
+            <a href="{{ url_for('dashboard') }}" class="active">Dashboard</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-layout">
+        <aside class="sidebar">
+            <h3>Welcome, Student!</h3>
+            <ul>
+                <li><a href="#" class="active">Overview</a></li>
+                <li><a href="{{ url_for('courses') }}">My Courses</a></li>
+            </ul>
+        </aside>
+
+        <section class="main-content">
+            <h2>Your Learning Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>In Progress</h4>
+                    <p class="stat-number">{{ stats.in_progress }}</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Completed</h4>
+                    <p class="stat-number">{{ stats.completed }}</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

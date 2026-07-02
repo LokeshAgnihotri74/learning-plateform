@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduStream | Advance Control Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="admin-header">
+        <div class="logo">EduStream <span>Control Panel</span></div>
+        <div>
+            <span style="color: #94a3b8; margin-right: 15px;">Welcome, {{ session.get('user_name') }}</span>
+            <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+        </div>
+    </header>
+
+    <main class="dashboard-layout">
+        <aside class="sidebar admin-sidebar">
+            <ul>
+                <li><a href="#" class="admin-tab active" data-target="manage-courses">Manage Courses</a></li>
+                <li><a href="#" class="admin-tab" data-target="manage-users">Manage Users</a></li>
+                <li><a href="#" class="admin-tab" data-target="control-content">Update Website</a></li>
+            </ul>
+        </aside>
+
+        <section class="main-content">
+            
+            <div id="manage-courses" class="admin-section active-section">
+                <h2>Course Management Engine</h2>
+                <form action="{{ url_for('admin') }}" method="POST" style="margin: 20px 0; background: #fff; padding: 20px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                    <input type="hidden" name="action" value="add_course">
+                    <div style="display: grid; gap: 15px;">
+                        <input type="text" name="course_title" placeholder="Course Title (e.g., Advanced CSS Grid)" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                        <input type="text" name="course_category" placeholder="Category Badge (e.g., Frontend)" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                        <textarea name="course_description" placeholder="Detailed Course Description..." required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; height: 80px;"></textarea>
+                        <button type="submit" class="btn-primary" style="border: none; padding: 12px; cursor: pointer;">Publish Course to Database</button>
+                    </div>
+                </form>
+
+                <h3>Live Active Courses</h3>
+                <table class="admin-table">
+                    <thead>
+                        <tr><th>ID</th><th>Course Title</th><th>Category</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for course in courses %}
+                        <tr>
+                            <td>#{{ course[0] }}</td>
+                            <td><strong>{{ course[1] }}</strong></td>
+                            <td><span class="course-badge" style="margin:0;">{{ course[2] }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="manage-users" class="admin-section">
+                <h2>User Directory</h2>
+                <table class="admin-table">
+                    <thead>
+                        <tr><th>ID</th><th>Full Name</th><th>Email ID</th><th>System Role</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user[0] }}</td>
+                            <td>{{ user[1] }}</td>
+                            <td>{{ user[2] }}</td>
+                            <td style="text-transform: uppercase; font-weight: bold; color: {% if user[3]=='admin' %}#ef4444{% else %}#10b981{% endif %};" >{{ user[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="control-content" class="admin-section">
+                <h2>Dynamic Website CMS Portal</h2>
+                <form action="{{ url_for('admin') }}" method="POST" style="background: #fff; padding: 20px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                    <input type="hidden" name="action" value="update_content">
+                    <div style="display: grid; gap: 15px;">
+                        <div>
+                            <label style="font-weight: 600; display: block; margin-bottom: 5px;">Main Hero Heading Title</label>
+                            <input type="text" name="hero_title" value="{{ content[1] }}" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display: block; margin-bottom: 5px;">Hero Paragraph Content Description</label>
+                            <textarea name="hero_desc" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; height: 100px;">{{ content[2] }}</textarea>
+                        </div>
+                        <button type="submit" class="btn-secondary" style="border: none; padding: 12px; cursor: pointer;">Apply & Update Live Website</button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+/* Color Variables & Base Reset */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e293b;
+    --background: #f8fafc;
+    --text-color: #334155;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body { 
+    background-color: var(--background); 
+    color: var(--text-color); 
+    line-height: 1.6;
+}
+
+/* Header Navigation Bar */
+header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 5%; 
+    background: var(--card-bg); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+}
+
+.logo { 
+    font-size: 24px; 
+    font-weight: bold; 
+    color: var(--primary-color); 
+}
+
+nav a { 
+    text-decoration: none; 
+    color: var(--text-color); 
+    margin-left: 20px; 
+    font-weight: 500; 
+    transition: color 0.2s ease;
+}
+
+nav a:hover, nav a.active { 
+    color: var(--primary-color); 
+}
+
+.btn-admin { 
+    border: 1px solid var(--primary-color); 
+    padding: 6px 14px; 
+    border-radius: 4px; 
+}
+
+/* Landing Page Hero Section */
+.hero { 
+    text-align: center; 
+    padding: 100px 20px; 
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); 
+}
+
+.hero h1 { 
+    font-size: 48px; 
+    margin-bottom: 20px; 
+    color: var(--secondary-color); 
+}
+
+.hero p { 
+    font-size: 18px; 
+    margin-bottom: 30px; 
+    color: #475569;
+}
+
+.btn-primary, .btn-secondary { 
+    display: inline-block; 
+    padding: 12px 24px; 
+    border-radius: 6px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    margin: 5px; 
+    transition: transform 0.2s;
+}
+
+.btn-primary { background: var(--primary-color); color: #fff; }
+.btn-secondary { background: var(--secondary-color); color: #fff; }
+.btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+
+/* Layout Structure for Dashboards (Sidebar + Main Content) */
+.dashboard-layout { 
+    display: flex; 
+    min-height: calc(100vh - 74px); 
+}
+
+.sidebar { 
+    width: 250px; 
+    background: var(--secondary-color); 
+    color: #fff; 
+    padding: 30px 20px; 
+}
+
+.sidebar h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #94a3b8;
+}
+
+.sidebar ul { list-style: none; }
+.sidebar ul li a { 
+    display: block; 
+    color: #cbd5e1; 
+    text-decoration: none; 
+    padding: 12px; 
+    border-radius: 4px; 
+    margin-bottom: 8px; 
+    font-weight: 500;
+}
+
+.sidebar ul li a.active, .sidebar ul li a:hover { 
+    background: var(--primary-color); 
+    color: #fff; 
+}
+
+.main-content { 
+    flex: 1; 
+    padding: 40px; 
+}
+
+/* Content Container & Responsive Grids */
+.container { padding: 40px 5%; }
+.section-title { margin-bottom: 25px; font-size: 28px; color: var(--secondary-color); }
+
+.courses-grid, .stats-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px; 
+    margin-top: 20px; 
+}
+
+/* UI Cards */
+.course-card, .stat-card { 
+    background: #fff; 
+    padding: 25px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
+    border: 1px solid var(--border-color); 
+}
+
+.course-badge { 
+    display: inline-block; 
+    background: #dbeafe; 
+    color: var(--primary-color); 
+    font-size: 12px; 
+    font-weight: bold; 
+    padding: 4px 8px; 
+    border-radius: 4px; 
+    margin-bottom: 12px; 
+}
+
+.course-card h3 { margin-bottom: 10px; color: var(--secondary-color); }
+.course-card p { color: #64748b; font-size: 14px; margin-bottom: 15px; }
+
+.btn-course { 
+    display: block; 
+    text-align: center; 
+    background: var(--primary-color); 
+    color: #fff; 
+    padding: 10px; 
+    border-radius: 4px; 
+    text-decoration: none; 
+    font-weight: 500;
+}
+
+/* Stats Block */
+.stat-number { font-size: 36px; font-weight: bold; color: var(--primary-color); margin-top: 10px; }
+
+/* Admin Control Panel Styles */
+.admin-header { background: #0f172a; color: #fff; }
+.admin-header .logo span { 
+    font-size: 12px; 
+    background: #334155; 
+    padding: 2px 8px; 
+    border-radius: 4px; 
+    margin-left: 8px; 
+    color: #94a3b8; 
+}
+
+.btn-logout { background: #ef4444; color: white; text-decoration: none; padding: 6px 14px; border-radius: 4px; font-size: 14px; }
+
+/* Dynamic Admin Panels */
+.admin-section { display: none; }
+.admin-section.active-section { display: block; }
+
+.admin-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.admin-table th, .admin-table td { 
+    padding: 14px; 
+    border-bottom: 1px solid var(--border-color); 
+    text-align: left; 
+}
+
+.admin-table th { background: #f1f5f9; color: var(--secondary-color); font-weight: 600; }

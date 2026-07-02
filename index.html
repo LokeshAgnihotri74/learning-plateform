@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduStream | Learn Modern Skills</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">EduStream</div>
+        <nav>
+            <a href="{{ url_for('home') }}" class="active">Home</a>
+            <a href="{{ url_for('courses') }}">Courses</a>
+            <a href="{{ url_for('dashboard') }}">Student Dash</a>
+            <a href="{{ url_for('login') }}" class="btn-admin">Admin/Login</a>
+        </nav>
+    </header>
+
+    <main class="container" style="text-align: center; margin-top: 100px;">
+        <section class="hero">
+            <!-- content[1] is Title, content[2] is Description -->
+            <h1 style="font-size: 3rem; color: #1e293b; margin-bottom: 20px;">{{ content[1] }}</h1>
+            <p style="font-size: 1.2rem; color: #64748b; margin-bottom: 4px; max-width: 600px; margin-left: auto; margin-right: auto;">{{ content[2] }}</p>
+            <div class="hero-buttons" style="margin-top: 30px; display: flex; gap: 15px; justify-content: center;">
+                <a href="{{ url_for('courses') }}" class="btn-primary" style="padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; background: #2563eb; color: #fff;">Explore Courses</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
